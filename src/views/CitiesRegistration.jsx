@@ -53,10 +53,10 @@ function CitiesRegistration() {
       <div className='city'>
         <h3>Add A City</h3>
         <form>
-          <input type="text" placeholder='city name' onChange={handleCityChange}/>
-          <input type="number" placeholder='population' onChange={handlePopulationChange}/>
-          <input type="number" placeholder='Weather' onChange={handleWeatherChange}/>
-          <button type="submit" onClick={(e) => submitForm(e)}>Add City</button>
+          <input type="text" className='cityname' name='city' placeholder='city name' onChange={handleCityChange}/>
+          <input type="number" className='pop' name='pop' placeholder='population' onChange={handlePopulationChange}/>
+          <input type="number" className='weather' name='weather' placeholder='Weather' onChange={handleWeatherChange}/>
+          <button type="submit" onClick={(e) => submitForm(e)} disabled={city == '' || population == '' || weather == ''}>Add City</button>
         </form>
       </div>
       <button className='viewcities'>View Cities</button>

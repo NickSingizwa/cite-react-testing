@@ -2,6 +2,7 @@ import { useState } from 'react'
 import '../styles/citiesRegistration.scss'
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function CitiesRegistration() {
     const [city,setCity] = useState("")
@@ -20,10 +21,11 @@ function CitiesRegistration() {
 
     const submitForm = (e) =>{
         e.preventDefault();
+        console.log("reached")
         if(city != "" && population != "" && weather != ""){
           axios.post('localhost:8080/api/cities/add',{
-            Name: city,
-            Weather: weather,
+            name: city,
+            weather: weather,
           }).then((res)=>{
             console.log(res)
             toast("City added successfully",{
@@ -59,7 +61,7 @@ function CitiesRegistration() {
           <button type="submit" onClick={(e) => submitForm(e)} disabled={city == '' || population == '' || weather == ''}>Add City</button>
         </form>
       </div>
-      <button className='viewcities'>View Cities</button>
+      <Link to="/cities"><button className='viewcities'>View Cities</button></Link>
     </div>
   )
 }
